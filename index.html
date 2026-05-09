@@ -1,9 +1,154 @@
 <!DOCTYPE html>
-<html>
-<head><title>RomeGe</title></head>
-<body style="background:#0a0a0f;color:#fff;font-family:sans-serif;text-align:center;padding-top:20vh">
-<h1 style="font-size:3rem">Hello, I'm RomeGe</h1>
-<p>Full Stack Developer</p>
-<a href="https://github.com/RomeGe" style="color:#7c3aed">GitHub</a>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RomeGe | Personal Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#cbd5e1;font-family:Inter,sans-serif;overflow-x:hidden}
+::selection{background:rgba(124,58,237,.3);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0d0d14}
+::-webkit-scrollbar-thumb{background:linear-gradient(#7c3aed,#3b82f6);border-radius:3px}
+.g{background:linear-gradient(135deg,#7c3aed,#3b82f6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:.4s}
+nav.a{background:rgba(13,13,20,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+nav .l{font-size:1.25rem;font-weight:700;text-decoration:none}
+nav ul{display:flex;gap:32px;list-style:none}
+nav ul a{color:#94a3b8;text-decoration:none;font-size:.875rem;font-weight:500;position:relative;transition:.3s}
+nav ul a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,#7c3aed,#06b6d4);transition:.3s;border-radius:1px}
+nav ul a:hover,nav ul a.on{color:#fff}
+nav ul a:hover::after,nav ul a.on::after{width:100}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero .bg{position:absolute;inset:0}
+.hero .g1{position:absolute;top:20%;left:20%;width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.15),transparent 70%);border-radius:50%;filter:blur(60px);animation:p 4s ease-in-out infinite}
+.hero .g2{position:absolute;bottom:20%;right:20%;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.15),transparent 70%);border-radius:50%;filter:blur(60px);animation:p 4s ease-in-out infinite 2s}
+@keyframes p{0%,100%{opacity:.4}50%{opacity:1}}
+canvas{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-c{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:800px}
+.badge{display:inline-block;padding:8px 20px;border-radius:999px;font-size:.875rem;background:rgba(124,58,237,.1);color:#a78bfa;border:1px solid rgba(124,58,237,.2);margin-bottom:24px;opacity:0;animation:u .8s ease forwards .2s}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.15;margin-bottom:24px;opacity:0;animation:u .8s ease forwards .4s}
+.hero-c>p{font-size:clamp(1rem,2vw,1.25rem);color:#64748b;max-width:600px;margin:0 auto 40px;opacity:0;animation:u .8s ease forwards .6s}
+.btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:u .8s ease forwards .8s}
+.btn{padding:12px 32px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;transition:.3s;cursor:pointer;border:none}
+.btn.p{background:linear-gradient(135deg,#7c3aed,#3b82f6);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.25)}
+.btn.p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.35)}
+.btn.o{background:0 0;color:#cbd5e1;border:1px solid #334155}
+.btn.o:hover{border-color:#7c3aed;color:#fff}
+@keyframes u{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+.cur{display:inline-block;width:3px;height:.9em;background:#06b6d4;margin-left:4px;animation:b 1s step-end infinite;vertical-align:text-bottom}
+@keyframes b{0%,100%{opacity:1}50%{opacity:0}}
+.s{padding:100px 0}
+.ct{max-width:1200px;margin:0 auto;padding:0 24px}
+.st{text-align:center;margin-bottom:64px}
+.st h2{font-size:2.25rem;font-weight:700;margin-bottom:16px}
+.div{width:60px;height:4px;margin:0 auto;border-radius:2px;background:linear-gradient(90deg,#7c3aed,#3b82f6)}
+.st p{color:#64748b;margin-top:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.av{display:flex;justify-content:center}
+.avb{width:320px;height:320px;border-radius:20px;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(59,130,246,.15));border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:7rem;position:relative;overflow:hidden}
+.avb::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(124,58,237,.1) 50%,transparent 60%);animation:sh 3s infinite}
+@keyframes sh{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.exp{position:absolute;bottom:-16px;right:-16px;width:90px;height:90px;border-radius:16px;background:linear-gradient(135deg,#7c3aed,#3b82f6);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.5rem;box-shadow:0 8px 30px rgba(124,58,237,.3)}
+.exp span{font-size:.7rem;font-weight:400;opacity:.8}
+.at h3{font-size:1.5rem;color:#fff;margin-bottom:16px}
+.at p{color:#94a3b8;margin-bottom:16px;line-height:1.8}
+.hl{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.hi{display:flex;gap:12px;align-items:flex-start}
+.hic{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:rgba(124,58,237,.1);display:flex;align-items:center;justify-content:center}
+.hic svg{width:20px;height:20px;color:#a78bfa}
+.hi h4{font-size:.875rem;color:#fff;font-weight:600}
+.hi p{font-size:.75rem;color:#64748b;margin-bottom:0}
+.skills{padding:100px 0;background:rgba(13,13,20,.5)}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px}
+.si{margin-bottom:8px}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sn{font-size:.875rem;font-weight:500;color:#fff}
+.sb{font-size:.65rem;padding:2px 8px;border-radius:999px;background:rgba(124,58,237,.1);color:#a78bfa;border:1px solid rgba(124,58,237,.2);margin-left:12px}
+.sp{font-size:.875rem;color:#475569;font-family:monospace}
+.sbar{height:8px;background:#16161f;border-radius:4px;overflow:hidden}
+.sfill{height:100%;border-radius:4px;width:0;background:linear-gradient(90deg,#7c3aed,#3b82f6);transition:width 1.5s cubic-bezier(.4,0,.2,1)}
+.stags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:64px}
+.stag{padding:8px 20px;border-radius:999px;font-size:.875rem;background:#16161f;border:1px solid rgba(255,255,255,.05);color:#94a3b8;cursor:default;transition:.3s}
+.stag:hover{background:rgba(124,58,237,.15);color:#a78bfa;border-color:rgba(124,58,237,.3);transform:scale(1.05)}
+.projects{padding:100px 0}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+.pc{background:rgba(255,255,255,.02);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:28px;display:flex;flex-direction:column;transition:.4s;position:relative;overflow:hidden}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.pc:nth-child(1)::before{background:linear-gradient(90deg,#7c3aed,#3b82f6)}
+.pc:nth-child(2)::before{background:linear-gradient(90deg,#3b82f6,#06b6d4)}
+.pc:nth-child(3)::before{background:linear-gradient(90deg,#06b6d4,#7c3aed)}
+.pc:nth-child(4)::before{background:linear-gradient(90deg,#7c3aed,#ec4899)}
+.pc:nth-child(5)::before{background:linear-gradient(90deg,#ec4899,#f97316)}
+.pc:nth-child(6)::before{background:linear-gradient(90deg,#f97316,#eab308)}
+.pc:hover{transform:translateY(-8px);background:rgba(255,255,255,.04);border-color:rgba(124,58,237,.2);box-shadow:0 20px 60px rgba(124,58,237,.1)}
+.pc h3{font-size:1.25rem;color:#fff;margin-bottom:12px;font-weight:600}
+.pc p{font-size:.875rem;color:#94a3b8;flex-grow:1;line-height:1.7;margin-bottom:16px}
+.pt{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.pt span{font-size:.75rem;padding:4px 10px;border-radius:6px;background:#16161f;color:#94a3b8;border:1px solid rgba(255,255,255,.05)}
+.pf{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(255,255,255,.05)}
+.ps{display:flex;gap:16px}
+.ps span{display:flex;align-items:center;gap:4px;font-size:.75rem;color:#475569}
+.ps svg{width:14px;height:14px}
+.pl{display:flex;gap:8px}
+.pl a{padding:8px;border-radius:8px;color:#64748b;transition:.3s}
+.pl a:hover{background:rgba(255,255,255,.05);color:#fff}
+.pl svg{width:16px;height:16px}
+.contact{padding:100px 0;background:rgba(13,13,20,.5)}
+.cc{max-width:700px;margin:0 auto;background:rgba(255,255,255,.02);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.05);border-radius:20px;padding:48px}
+.ci{width:64px;height:64px;border-radius:16px;margin:0 auto 24px;background:linear-gradient(135deg,#7c3aed,#3b82f6);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(124,58,237,.25)}
+.ci svg{width:28px;height:28px;color:#fff}
+.cc h3{font-size:1.5rem;color:#fff;text-align:center;margin-bottom:8px}
+.cc>p{text-align:center;color:#64748b;margin-bottom:40px}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sl{display:flex;align-items:center;gap:16px;padding:16px;border-radius:12px;background:rgba(22,22,31,.5);border:1px solid rgba(255,255,255,.05);text-decoration:none;color:#94a3b8;transition:.3s}
+.sl:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.sl .ib{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.3s}
+.sl svg{width:20px;height:20px;transition:.3s}
+.sl .info{line-height:1.4}
+.sl .info .n{font-size:.875rem;font-weight:600;color:#fff}
+.sl .info .u{font-size:.75rem}
+.sl.gh:hover .ib{background:rgba(255,255,255,.1)}.sl.gh:hover svg{color:#fff}
+.sl.em:hover .ib{background:rgba(239,68,68,.1)}.sl.em:hover svg{color:#f87171}
+.sl.tw:hover .ib{background:rgba(59,130,246,.1)}.sl.tw:hover svg{color:#60a5fa}
+.sl.li:hover .ib{background:rgba(59,130,246,.1)}.sl.li:hover svg{color:#3b82f6}
+.sl.wc:hover .ib{background:rgba(34,197,94,.1)}.sl.wc:hover svg{color:#4ade80}
+.cl{text-align:center;margin-top:32px;font-size:.875rem;color:#475569}
+footer{padding:32px 0;border-top:1px solid rgba(255,255,255,.05)}
+.fi{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.fl{font-size:.875rem;color:#475569;display:flex;align-items:center;gap:8px}
+.fr{font-size:.875rem;color:#475569;display:flex;align-items:center;gap:4px}
+.fr svg{width:14px;height:14px;color:#ef4444;fill:currentColor}
+.rev{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.rev.v{opacity:1;transform:translateY(0)}
+@media(max-width:768px){nav ul{display:none}.grid2{grid-template-columns:1fr;text-align:center}.hl{grid-template-columns:1fr}.sg{grid-template-columns:1fr}.pg{grid-template-columns:1fr}.sgrid{grid-template-columns:1fr}.cc{padding:32px 24px}.fi{flex-direction:column;text-align:center}.avb{width:240px;height:240px;font-size:5rem}}
+</style>
+</head>
+<body>
+<nav id="nav"><a href="#hero" class="l g">Portfolio</a><ul id="nl"><li><a href="#hero" class="on">首页</a></li><li><a href="#about">关于</a></li><li><a href="#skills">技能</a></li><li><a href="#projects">项目</a></li><li><a href="#contact">联系</a></li></ul></nav>
+<section class="hero" id="hero"><div class="bg"><div class="g1"></div><div class="g2"></div></div><canvas id="pc"></canvas><div class="hero-c"><div class="badge">欢迎来到我的个人空间</div><h1><span style="color:#fff">你好，我是</span><br><span class="g" id="tw"></span><span class="cur"></span></h1><p>热爱创造优雅的数字体验，专注于现代 Web 技术与创新设计</p><div class="btns"><a href="#projects" class="btn p">查看项目</a><a href="#contact" class="btn o">联系我</a></div></div></section>
+<section class="s" id="about"><div class="ct"><div class="st rev"><h2>关于 <span class="g">我</span></h2><div class="div"></div></div><div class="grid2"><div class="av rev"><div class="avb">👨‍💻<div class="exp">5+<span>年经验</span></div></div></div><div class="at rev"><h3>全栈开发者 / 设计爱好者</h3><p>我是一名热爱技术与设计的全栈开发者。专注于构建高质量的 Web 应用，从前端交互到后端架构，从用户体验到系统性能，我都力求做到最好。</p><p>工作之余，我喜欢探索新技术、参与开源项目、分享技术心得。我相信好的代码不仅能解决问题，还能启发思考。</p><div class="hl"><div class="hi"><div class="hic"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div><div><h4>全栈开发</h4><p>前后端技术栈全覆盖</p></div></div><div class="hi"><div class="hic"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div><div><h4>UI/UX 设计</h4><p>注重用户体验与视觉美感</p></div></div><div class="hi"><div class="hic"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><div><h4>性能优化</h4><p>追求极致的加载速度</p></div></div><div class="hi"><div class="hic"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><h4>持续学习</h4><p>保持对新技术的好奇</p></div></div></div></div></div></div></section>
+<section class="skills" id="skills"><div class="ct"><div class="st rev"><h2>技术 <span class="g">栈</span></h2><div class="div"></div><p>持续学习与实践，掌握多种前沿技术</p></div><div class="sg" id="sg"></div><div class="stags" id="stags"></div></div></section>
+<section class="projects" id="projects"><div class="ct"><div class="st rev"><h2>精选 <span class="g">项目</span></h2><div class="div"></div><p>近期参与或独立完成的一些项目</p></div><div class="pg" id="pg"></div></div></section>
+<section class="contact" id="contact"><div class="ct"><div class="st rev"><h2>联系 <span class="g">方式</span></h2><div class="div"></div><p>如果你对我的工作感兴趣，或者有任何合作想法，欢迎随时联系我</p></div><div class="cc rev"><div class="ci"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><h3>期待与你交流</h3><p>无论是技术讨论、项目合作还是简单的打个招呼</p><div class="sgrid" id="sgrid"></div><div class="cl">📍 中国 · 开放远程协作</div></div></div></section>
+<footer><div class="ct"><div class="fi"><div class="fl"><span>© <span id="yr"></span></span><span class="g" style="font-weight:600">Portfolio</span><span>. All rights reserved.</span></div><div class="fr"><span>Built with</span><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span>using HTML, CSS & JS</span></div></div></div></footer>
+<script>
+// Particles
+(function(){const c=document.getElementById('pc'),x=c.getContext('2d');let w,h,P=[];function r(){w=c.width=innerWidth;h=c.height=innerHeight}r();addEventListener('resize',r);for(let i=0;i<60;i++)P.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.5+.5,o:Math.random()*.4+.1});(function d(){x.clearRect(0,0,w,h);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle='rgba(124,58,237,'+p.o+')';x.fill()});for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.strokeStyle='rgba(124,58,237,'+(.06*(1-d/120))+')';x.lineWidth=.5;x.stroke()}}requestAnimationFrame(d)})();
+// Typewriter
+(function(){const t=['全栈开发者','UI 设计师','开源爱好者','技术探索者'],e=document.getElementById('tw');let i=0,c=0,d=false;function k(){const s=t[i];if(!d){e.textContent=s.slice(0,++c);if(c===s.length){setTimeout(()=>{d=true;k()},2000);return}}else{e.textContent=s.slice(0,--c);if(c===0){d=false;i=(i+1)%t.length}}setTimeout(k,d?50:100)}k()})();
+// Nav
+(function(){const n=document.getElementById('nav'),ls=document.querySelectorAll('#nl a'),S=['hero','about','skills','projects','contact'];addEventListener('scroll',()=>{n.classList.toggle('a',scrollY>50);let cur='hero';S.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=150)cur=id});ls.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))})})();
+// Reveal
+(function(){const o=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('v');o.unobserve(i.target)}})},{threshold:.15});document.querySelectorAll('.rev').forEach(el=>o.observe(el))})();
+// Skills
+(function(){const s=[{n:'React / Next.js',l:95,c:'前端'},{n:'TypeScript',l:90,c:'前端'},{n:'Vue.js',l:85,c:'前端'},{n:'Tailwind CSS',l:92,c:'前端'},{n:'Node.js',l:88,c:'后端'},{n:'Python',l:82,c:'后端'},{n:'PostgreSQL',l:80,c:'后端'},{n:'Docker',l:78,c:'DevOps'},{n:'AWS / Cloud',l:75,c:'DevOps'},{n:'Git',l:90,c:'工具'},{n:'Figma',l:85,c:'设计'},{n:'UI/UX Design',l:80,c:'设计'}];const t=['React','Next.js','Vue','Nuxt','TypeScript','JavaScript','Python','Go','Node.js','Express','FastAPI','PostgreSQL','MongoDB','Redis','Docker','Kubernetes','AWS','Vercel','Git','Linux','Figma','Tailwind','GraphQL','REST API'];const g=document.getElementById('sg');s.forEach(s=>{const d=document.createElement('div');d.className='si rev';d.innerHTML='<div class="sh"><div><span class="sn">'+s.n+'</span><span class="sb">'+s.c+'</span></div><span class="sp">'+s.l+'%</span></div><div class="sbar"><div class="sfill" data-l="'+s.l+'"></div></div>';g.appendChild(d)});const te=document.getElementById('stags');t.forEach(t=>{const s=document.createElement('span');s.className='stag';s.textContent=t;te.appendChild(s)});const o=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){const f=i.target.querySelector('.sfill');if(f)f.style.width=f.dataset.l+'%';o.unobserve(i.target)}})},{threshold:.3});document.querySelectorAll('.si').forEach(el=>o.observe(el))})();
+// Projects
+(function(){const P=[{t:'智能仪表盘',d:'基于 React + D3.js 构建的实时数据可视化平台，支持多数据源接入、自定义图表组件和实时数据流展示。',t2:['React','TypeScript','D3.js','WebSocket'],s:128,f:32},{t:'AI 写作助手',d:'利用大语言模型 API 开发的智能写作工具，支持文章生成、润色、翻译和风格改写等功能。',t2:['Next.js','OpenAI API','Prisma','PostgreSQL'],s:256,f:64},{t:'跨平台移动应用',d:'使用 React Native 开发的健康管理应用，集成运动追踪、饮食记录和睡眠分析等功能。',t2:['React Native','Expo','Firebase','Redux'],s:89,f:21},{t:'开发者工具箱',d:'集合多种实用开发工具的 Web 应用，包括 JSON 格式化、正则测试、编码转换、API 测试等功能。',t2:['Vue 3','Vite','Pinia','Tailwind CSS'],s:167,f:45},{t:'微服务电商平台',d:'基于微服务架构的电商系统，包含用户服务、商品服务、订单服务和支付服务，使用 Docker 编排部署。',t2:['Node.js','Express','MongoDB','Docker','RabbitMQ'],s:203,f:78},{t:'开源组件库',d:'高质量的 React UI 组件库，包含 50+ 组件，支持主题定制、暗色模式和完整的无障碍支持。',t2:['React','TypeScript','Storybook','Rollup'],s:512,f:128}];const g=document.getElementById('pg');P.forEach(p=>{const c=document.createElement('div');c.className='pc rev';c.innerHTML='<h3>'+p.t+'</h3><p>'+p.d+'</p><div class="pt">'+p.t2.map(t=>'<span>'+t+'</span>').join('')+'</div><div class="pf"><div class="ps"><span>⭐ '+p.s+'</span><span>🔀 '+p.f+'</span></div><div class="pl"><a href="#" title="GitHub"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a><a href="#" title="Demo"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></div></div>';g.appendChild(c)})})();
+// Contact
+(function(){const S=[{n:'GitHub',u:'@RomeGe',h:'https://github.com/RomeGe',c:'gh',i:'<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>'},{n:'邮箱',u:'your@email.com',h:'mailto:your@email.com',c:'em',i:'<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>'},{n:'Twitter / X',u:'@yourhandle',h:'https://twitter.com',c:'tw',i:'<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>'},{n:'LinkedIn',u:'Your Name',h:'https://linkedin.com',c:'li',i:'<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>'},{n:'微信',u:'your_wechat_id',h:'#',c:'wc',i:'<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>'},{n:'微博',u:'@your_weibo',h:'https://weibo.com',c:'wb',i:'<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>'}];const g=document.getElementById('sgrid');S.forEach(s=>{const a=document.createElement('a');a.href=s.h;a.target='_blank';a.rel='noopener noreferrer';a.className='sl '+s.c;a.innerHTML='<div class="ib">'+s.i+'</div><div class="info"><div class="n">'+s.n+'</div><div class="u">'+s.u+'</div></div>';g.appendChild(a)})();document.getElementById('yr').textContent=new Date().getFullYear()
+</script>
 </body>
 </html>
