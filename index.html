@@ -49,7 +49,7 @@ a{color:inherit;text-decoration:none}
 .nav-inner{max-width:1300px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'JetBrains Mono',monospace;position:relative;transition:.3s}
 .nav-logo:hover{transform:scale(1.05);filter:brightness(1.2)}
-.nav-logo::after{content:'v5.0';position:absolute;top:-8px;right:-28px;font-size:.5rem;padding:1px 4px;border-radius:4px;background:var(--purple);color:#fff;-webkit-text-fill-color:#fff;font-weight:600}
+.nav-logo::after{content:'v6.0';position:absolute;top:-8px;right:-28px;font-size:.5rem;padding:1px 4px;border-radius:4px;background:var(--purple);color:#fff;-webkit-text-fill-color:#fff;font-weight:600}
 .nav-links{display:flex;gap:4px;list-style:none}
 .nav-links a{padding:8px 16px;border-radius:10px;font-size:.82rem;font-weight:500;color:var(--text2);transition:all .3s;position:relative}
 .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(139,92,246,.1)}
@@ -400,6 +400,120 @@ section{padding:100px 24px;position:relative}
 /* ===== READING PROGRESS (per section) ===== */
 .section-progress{position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));z-index:1;width:0;transition:width .15s}
 
+/* ===== SVG RADAR CHART ===== */
+.svg-radar{width:100%;aspect-ratio:1;position:relative}
+.svg-radar svg{width:100%;height:100%}
+.svg-radar .radar-polygon{fill:rgba(139,92,246,.1);stroke:var(--purple);stroke-width:2;transition:all .5s}
+.svg-radar .radar-polygon:hover{fill:rgba(139,92,246,.18)}
+.svg-radar .radar-axis{stroke:rgba(139,92,246,.08);stroke-width:1}
+.svg-radar .radar-label{fill:var(--text2);font-size:11px;font-family:'JetBrains Mono',monospace;text-anchor:middle;dominant-baseline:middle}
+.svg-radar .radar-point{fill:var(--purple);r:5;cursor:pointer;transition:all .3s}
+.svg-radar .radar-point:hover{r:8;fill:var(--cyan);filter:drop-shadow(0 0 8px rgba(6,182,212,.6))}
+.svg-radar .radar-point-tip{fill:var(--bg2);stroke:var(--glass-border);rx:6;opacity:0;pointer-events:none;transition:.3s}
+.svg-radar .radar-point-text{fill:#fff;font-size:11px;font-family:'JetBrains Mono',monospace;opacity:0;pointer-events:none;transition:.3s}
+.svg-radar .radar-point:hover ~ .radar-point-tip,.svg-radar .radar-point:hover ~ .radar-point-text{opacity:1}
+
+/* ===== ANIMATED GRID BACKGROUND ===== */
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(139,92,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:60px 60px;z-index:0;animation:grid-move 20s linear infinite}
+@keyframes grid-move{0%{background-position:0 0}100%{background-position:60px 60px}}
+.hero .grid-bg{opacity:.5}
+
+/* ===== NEON GLOW EFFECTS ===== */
+.neon-purple{text-shadow:0 0 10px rgba(139,92,246,.5),0 0 20px rgba(139,92,246,.3),0 0 40px rgba(139,92,246,.15)}
+.neon-cyan{text-shadow:0 0 10px rgba(6,182,212,.5),0 0 20px rgba(6,182,212,.3),0 0 40px rgba(6,182,212,.15)}
+.neon-border{box-shadow:0 0 15px rgba(139,92,246,.15),inset 0 0 15px rgba(139,92,246,.05)}
+
+/* ===== HOLOGRAPHIC CARD ===== */
+.holo-card{position:relative;overflow:hidden}
+.holo-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(139,92,246,.08),transparent,rgba(6,182,212,.08),transparent,rgba(236,72,153,.08),transparent);animation:holo-spin 8s linear infinite;opacity:0;transition:opacity .5s}
+.holo-card:hover::before{opacity:1}
+@keyframes holo-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+/* ===== MATRIX RAIN ===== */
+.matrix-overlay{position:fixed;inset:0;z-index:99998;pointer-events:none;opacity:0;transition:opacity 1s}
+.matrix-overlay.show{opacity:1}
+.matrix-canvas{width:100%;height:100%}
+
+/* ===== TYPING CURSOR GLOW ===== */
+.cur{animation:blink 1s step-end infinite,cur-glow 2s ease-in-out infinite}
+@keyframes cur-glow{0%,100%{filter:drop-shadow(0 0 4px rgba(6,182,212,.3))}50%{filter:drop-shadow(0 0 8px rgba(6,182,212,.6))}}
+
+/* ===== PARTICLE CONNECTIONS ===== */
+#stars{z-index:1}
+
+/* ===== SECTION NUMBER ===== */
+.sec-num{position:absolute;top:40px;right:40px;font-size:6rem;font-weight:900;font-family:'JetBrains Mono',monospace;opacity:.03;color:var(--purple);pointer-events:none;user-select:none}
+
+/* ===== ANIMATED UNDERLINE ===== */
+.animated-underline{position:relative;display:inline-block}
+.animated-underline::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .3s}
+.animated-underline:hover::after{width:100%}
+
+/* ===== FLOATING LABEL ===== */
+.float-label{position:relative}
+.float-label input,.float-label textarea{padding-top:18px}
+.float-label label{position:absolute;top:50%;left:14px;transform:translateY(-50%);font-size:.85rem;color:var(--text3);transition:.2s;pointer-events:none}
+.float-label input:focus+label,.float-label input:not(:placeholder-shown)+label,.float-label textarea:focus+label,.float-label textarea:not(:placeholder-shown)+label{top:8px;transform:translateY(0);font-size:.65rem;color:var(--purple)}
+
+/* ===== STAGGER ANIMATION ===== */
+.stagger-item{opacity:0;transform:translateY(20px);transition:all .5s cubic-bezier(.4,0,.2,1)}
+.stagger-item.visible{opacity:1;transform:translateY(0)}
+
+/* ===== GLASS CARD ENHANCED ===== */
+.glass-enhanced{background:rgba(10,10,26,.6);backdrop-filter:blur(24px) saturate(1.8);border:1px solid rgba(255,255,255,.06);box-shadow:0 8px 32px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.05)}
+
+/* ===== SKILL LEVEL BADGE ===== */
+.skill-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:600;font-family:'JetBrains Mono',monospace}
+.skill-badge.expert{background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.2)}
+.skill-badge.advanced{background:rgba(139,92,246,.1);color:var(--purple);border:1px solid rgba(139,92,246,.2)}
+.skill-badge.intermediate{background:rgba(59,130,246,.1);color:var(--blue);border:1px solid rgba(59,130,246,.2)}
+
+/* ===== INTERACTIVE TIMELINE ===== */
+.tl-content .tl-expand{max-height:0;overflow:hidden;transition:max-height .4s ease;margin-top:0}
+.tl-content.expanded .tl-expand{max-height:200px;margin-top:10px}
+.tl-content .tl-toggle{font-size:.72rem;color:var(--purple);cursor:pointer;display:inline-flex;align-items:center;gap:4px;margin-top:8px;transition:.2s}
+.tl-content .tl-toggle:hover{color:var(--cyan)}
+.tl-content .tl-toggle svg{width:12px;height:12px;transition:transform .3s}
+.tl-content.expanded .tl-toggle svg{transform:rotate(180deg)}
+
+/* ===== ANIMATED STAT NUMBERS ===== */
+.stat-box .num{position:relative}
+.stat-box .num::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));transform:scaleX(0);transition:transform .5s;transform-origin:left}
+.stat-box:hover .num::after{transform:scaleX(1)}
+
+/* ===== ENHANCED BLOG CARD ===== */
+.blog-card .thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.6));z-index:0}
+.blog-card .thumb .icon-abs{position:absolute;bottom:16px;right:16px;font-size:2.5rem;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+
+/* ===== SCROLL DOWN BOUNCE ===== */
+@keyframes bounce-down{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-8px)}60%{transform:translateY(-4px)}}
+.hero-scroll .scroll-line{animation:scroll-anim 2s ease-in-out infinite,bounce-down 2s ease infinite}
+
+/* ===== NEON MODE ===== */
+body.neon-mode{--purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6}
+body.neon-mode .nav-logo{text-shadow:0 0 10px rgba(167,139,250,.6),0 0 20px rgba(167,139,250,.4)}
+body.neon-mode .hero h1 .gradient{filter:drop-shadow(0 0 10px rgba(167,139,250,.4))}
+body.neon-mode .btn-primary{box-shadow:0 0 20px rgba(167,139,250,.4),0 0 40px rgba(167,139,250,.2)}
+body.neon-mode .sec-header h2{filter:drop-shadow(0 0 8px rgba(167,139,250,.3))}
+
+/* ===== HOLOGRAPHIC PROJECT CARDS ===== */
+.proj-card{transform-style:preserve-3d}
+.proj-card .thumb{transition:transform .4s}
+.proj-card:hover .thumb{transform:translateZ(10px)}
+
+/* ===== ENHANCED LOADING WITH STEPS ===== */
+.loader{gap:16px}
+.loader-steps{display:flex;gap:12px;align-items:center;justify-content:center}
+.loader-step{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text3);opacity:0;transition:opacity .4s}
+.loader-step.active{color:var(--cyan);opacity:1}
+
+/* ===== SCROLL SNAP HINT ===== */
+.scroll-hint{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:50;font-size:.7rem;color:var(--text3);font-family:'JetBrains Mono',monospace;opacity:0;transition:opacity .5s;pointer-events:none}
+.scroll-hint.show{opacity:.5}
+
+/* ===== TYPING CURSOR ENHANCED ===== */
+.code-cursor{animation:blink 1s step-end infinite,cur-glow 2s ease-in-out infinite}
+
 /* ===== CODE TYPING HERO ===== */
 .code-window{background:rgba(10,10,26,.8);border:1px solid var(--glass-border);border-radius:14px;overflow:hidden;max-width:520px;margin:0 auto 32px;text-align:left;backdrop-filter:blur(16px)}
 .code-titlebar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--glass-border)}
@@ -522,7 +636,7 @@ section{padding:100px 24px;position:relative}
 <body>
 
 <!-- Loader -->
-<div class="loader" id="loader"><div class="loader-logo">RomeGe</div><div class="loader-bar"><div class="loader-bar-fill"></div></div><div class="loader-text">INITIALIZING</div></div>
+<div class="loader" id="loader"><div class="loader-logo">RomeGe</div><div class="loader-bar"><div class="loader-bar-fill"></div></div><div class="loader-steps"><span class="loader-step" data-step="0">加载资源</span><span class="loader-step" data-step="1">初始化组件</span><span class="loader-step" data-step="2">渲染页面</span><span class="loader-step" data-step="3">准备就绪</span></div><div class="loader-text">INITIALIZING</div></div>
 
 <!-- Scroll Progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -571,6 +685,7 @@ section{padding:100px 24px;position:relative}
 <!-- Hero -->
 <section class="hero" id="hero">
 <div class="hero-bg"><div class="hero-orb o1"></div><div class="hero-orb o2"></div><div class="hero-orb o3"></div></div>
+<div class="grid-bg"></div>
 <canvas id="stars"></canvas>
 <div class="hero-content">
   <div class="hero-badge"><span class="dot"></span> 开放远程协作</div>
@@ -602,6 +717,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- About -->
 <section class="about" id="about">
+<div class="sec-num">01</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-purple">✦ 关于我</div><h2>热爱代码与设计的<br><span class="g">全栈开发者</span></h2><div class="divider"></div></div>
   <div class="about-grid">
@@ -628,10 +744,11 @@ section{padding:100px 24px;position:relative}
 
 <!-- Skills -->
 <section class="skills" id="skills">
+<div class="sec-num">02</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-cyan">⚡ 技能</div><h2>技术 <span class="g">栈</span></h2><p>持续学习与实践，掌握多种前沿技术</p><div class="divider"></div></div>
   <div class="skills-grid">
-    <div class="reveal-left"><div class="radar-wrap" id="radar"></div></div>
+    <div class="reveal-left"><div class="svg-radar" id="svgRadar"></div></div>
     <div class="skill-caps reveal-right" id="skillCats"></div>
   </div>
   <div class="tech-cloud" id="techCloud"></div>
@@ -640,6 +757,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- Projects -->
 <section class="projects" id="projects">
+<div class="sec-num">03</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-pink">🚀 项目</div><h2>精选 <span class="g">作品</span></h2><p>近期参与或独立完成的一些项目</p><div class="divider"></div></div>
   <div class="proj-filters reveal" id="projFilters"></div>
@@ -649,6 +767,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- GitHub -->
 <section class="github-sec" id="github">
+<div class="sec-num">04</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-green">📊 GitHub</div><h2>开源 <span class="g">贡献</span></h2><div class="divider"></div></div>
   <div class="gh-card reveal" id="ghCard"></div>
@@ -657,6 +776,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- Experience -->
 <section class="exp-sec" id="experience">
+<div class="sec-num">05</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-orange">💼 经历</div><h2>工作 <span class="g">时间线</span></h2><div class="divider"></div></div>
   <div class="timeline" id="timeline"></div>
@@ -665,6 +785,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- Testimonials -->
 <section class="testi-sec" id="testimonials">
+<div class="sec-num">06</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-purple">💬 评价</div><h2>他们这样 <span class="g">说我</span></h2><div class="divider"></div></div>
   <div class="testi-grid" id="testiGrid"></div>
@@ -673,6 +794,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- Achievements -->
 <section class="ach-sec" id="achievements">
+<div class="sec-num">07</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-orange">🏆 成就</div><h2>荣誉 <span class="g">徽章</span></h2><p>在技术旅程中获得的里程碑</p><div class="divider"></div></div>
   <div class="ach-grid" id="achGrid"></div>
@@ -681,6 +803,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- Blog -->
 <section class="blog-sec" id="blog">
+<div class="sec-num">08</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-cyan">✍️ 博客</div><h2>最新 <span class="g">文章</span></h2><p>分享技术心得与思考</p><div class="divider"></div></div>
   <div class="blog-grid" id="blogGrid"></div>
@@ -689,6 +812,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- Newsletter -->
 <section class="newsletter-sec" id="newsletter">
+<div class="sec-num">09</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-green">📬 订阅</div><h2>获取 <span class="g">最新动态</span></h2><p>订阅我的技术分享，第一时间获取新文章和项目更新</p><div class="divider"></div></div>
   <div class="newsletter reveal">
@@ -705,6 +829,7 @@ section{padding:100px 24px;position:relative}
 
 <!-- Contact -->
 <section class="contact-sec" id="contact">
+<div class="sec-num">10</div>
 <div class="container">
   <div class="sec-header reveal"><div class="tag tag-pink">📬 联系</div><h2>期待与你 <span class="g">交流</span></h2><p>无论是技术讨论、项目合作还是简单的打个招呼</p><div class="divider"></div></div>
   <div class="contact-grid">
@@ -748,6 +873,9 @@ section{padding:100px 24px;position:relative}
 
 <button class="btt" id="btt"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg></button>
 
+<!-- Matrix Rain Overlay -->
+<div class="matrix-overlay" id="matrixOverlay"><canvas class="matrix-canvas" id="matrixCanvas"></canvas></div>
+
 <!-- Project Modal -->
 <div class="proj-modal" id="projModal">
 <div class="proj-modal-box">
@@ -780,7 +908,12 @@ section{padding:100px 24px;position:relative}
 
 <script>
 // ===== LOADER =====
-window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),1200));
+(function(){const steps=document.querySelectorAll('.loader-step');
+let step=0;
+function nextStep(){if(step<steps.length){steps[step].classList.add('active');step++;setTimeout(nextStep,300)}}
+nextStep();
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),1500));
+})();
 
 // ===== CURSOR =====
 (function(){const o=document.getElementById('cOuter'),d=document.getElementById('cInner');let mx=0,my=0,cx=0,cy=0;
@@ -794,10 +927,15 @@ document.querySelectorAll('a,button,.btn,.proj-card,.skill-cat,.tech-tag,.pf-btn
 });
 })();
 
-// ===== STARS =====
+// ===== STARS WITH CONNECTIONS =====
 (function(){const cv=document.getElementById('stars'),x=cv.getContext('2d');let w,h,S=[];
-function r(){w=cv.width=innerWidth;h=cv.height=innerHeight;S=[];for(let i=0;i<100;i++)S.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+.3,s:Math.random()*.4+.1,o:Math.random()})}
-function draw(){x.clearRect(0,0,w,h);S.forEach(s=>{s.o+=s.s*.008;if(s.o>1||s.o<0)s.s*=-1;x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);x.fillStyle='rgba(139,92,246,'+Math.abs(s.o)*.5+')';x.fill()});requestAnimationFrame(draw)}
+function r(){w=cv.width=innerWidth;h=cv.height=innerHeight;S=[];for(let i=0;i<80;i++)S.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+.3,s:Math.random()*.4+.1,o:Math.random(),vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2})}
+function draw(){x.clearRect(0,0,w,h);
+// Draw connections
+for(let i=0;i<S.length;i++){for(let j=i+1;j<S.length;j++){const dx=S[i].x-S[j].x,dy=S[i].y-S[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){x.beginPath();x.moveTo(S[i].x,S[i].y);x.lineTo(S[j].x,S[j].y);x.strokeStyle='rgba(139,92,246,'+((1-d/150)*.12)+')';x.lineWidth=.5;x.stroke()}}}
+// Draw and update stars
+S.forEach(s=>{s.o+=s.s*.008;if(s.o>1||s.o<0)s.s*=-1;s.x+=s.vx;s.y+=s.vy;if(s.x<0)s.x=w;if(s.x>w)s.x=0;if(s.y<0)s.y=h;if(s.y>h)s.y=0;x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);x.fillStyle='rgba(139,92,246,'+Math.abs(s.o)*.5+')';x.fill()});
+requestAnimationFrame(draw)}
 r();draw();addEventListener('resize',r)})();
 
 // ===== CLOCK =====
@@ -830,30 +968,46 @@ function confetti(){const c=document.createElement('div');c.className='confetti'
 for(let i=0;i<50;i++){const p=document.createElement('div');p.className='confetti-piece';p.style.left=Math.random()*100+'%';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.animationDelay=Math.random()*.5+'s';p.style.animationDuration=(2+Math.random()*2)+'s';c.appendChild(p)}setTimeout(()=>c.remove(),4000)}
 
 // ===== MARQUEE =====
-(function(){const items=['React','Next.js','TypeScript','Vue','Node.js','Python','Docker','AWS','Tailwind','PostgreSQL','GraphQL','Figma','Linux','Git','Redis','MongoDB','Kubernetes','Vercel','React Native','D3.js','Go','Rust','Svelte'];const m=document.getElementById('marquee');let h='';for(let i=0;i<2;i++)items.forEach(t=>{h+='<div class="marquee-item"><span class="dot"></span>'+t+'</div>'});m.innerHTML=h})();
+(function(){const items=['React','Next.js','TypeScript','Vue','Node.js','Python','Docker','AWS','Tailwind','PostgreSQL','GraphQL','Figma','Linux','Git','Redis','MongoDB','Kubernetes','Vercel','React Native','D3.js','Go','Rust','Svelte','Prisma','tRPC','Supabase','Firebase','OpenAI','PyTorch'];const m=document.getElementById('marquee');let h='';for(let i=0;i<2;i++)items.forEach(t=>{h+='<div class="marquee-item"><span class="dot"></span>'+t+'</div>'});m.innerHTML=h})();
 
 // ===== SKILLS =====
 (function(){
 const cats=[
-  {name:'前端开发',emoji:'🎨',color:'purple',skills:[{n:'React / Next.js',l:95},{n:'TypeScript',l:90},{n:'Vue.js',l:85},{n:'Tailwind CSS',l:92}]},
-  {name:'后端开发',emoji:'⚙️',color:'blue',skills:[{n:'Node.js',l:88},{n:'Python',l:82},{n:'PostgreSQL',l:80},{n:'GraphQL',l:78}]},
-  {name:'DevOps & 云',emoji:'☁️',color:'cyan',skills:[{n:'Docker',l:78},{n:'AWS',l:75},{n:'CI/CD',l:80},{n:'Linux',l:85}]},
-  {name:'设计 & 工具',emoji:'🛠️',color:'pink',skills:[{n:'Figma',l:85},{n:'Git',l:90},{n:'UI/UX',l:80},{n:'Storybook',l:75}]}
+  {name:'前端开发',emoji:'🎨',color:'purple',skills:[{n:'React / Next.js',l:95},{n:'TypeScript',l:90},{n:'Vue.js',l:85},{n:'Tailwind CSS',l:92},{n:'Svelte',l:75}]},
+  {name:'后端开发',emoji:'⚙️',color:'blue',skills:[{n:'Node.js',l:88},{n:'Python',l:82},{n:'PostgreSQL',l:80},{n:'GraphQL',l:78},{n:'Go',l:70}]},
+  {name:'DevOps & 云',emoji:'☁️',color:'cyan',skills:[{n:'Docker',l:78},{n:'AWS',l:75},{n:'CI/CD',l:80},{n:'Linux',l:85},{n:'Kubernetes',l:68}]},
+  {name:'设计 & 工具',emoji:'🛠️',color:'pink',skills:[{n:'Figma',l:85},{n:'Git',l:90},{n:'UI/UX',l:80},{n:'Storybook',l:75},{n:'Prisma',l:72}]}
 ];
-const radarS=[{n:'React',x:50,y:12},{n:'TS',x:78,y:22},{n:'Node',x:88,y:50},{n:'Python',x:72,y:78},{n:'Docker',x:42,y:88},{n:'Design',x:18,y:68},{n:'DevOps',x:12,y:38},{n:'Vue',x:28,y:22}];
-const tags=['React','Next.js','Vue','Nuxt','Svelte','TypeScript','JavaScript','Python','Go','Rust','Node.js','Express','FastAPI','NestJS','PostgreSQL','MongoDB','Redis','Docker','K8s','AWS','GCP','Vercel','Netlify','Git','Linux','Figma','Tailwind','GraphQL','REST','WebSocket','gRPC','Jest','Cypress','Storybook','Webpack','Vite','Turborepo'];
+const radarS=[{n:'React',v:95},{n:'TypeScript',v:90},{n:'Node.js',v:88},{n:'Python',v:82},{n:'Docker',v:78},{n:'Design',v:85},{n:'DevOps',v:80},{n:'Vue',v:85}];
+const tags=['React','Next.js','Vue','Nuxt','Svelte','TypeScript','JavaScript','Python','Go','Rust','Node.js','Express','FastAPI','NestJS','PostgreSQL','MongoDB','Redis','Docker','K8s','AWS','GCP','Vercel','Netlify','Git','Linux','Figma','Tailwind','GraphQL','REST','WebSocket','gRPC','Jest','Cypress','Storybook','Webpack','Vite','Turborepo','Prisma','tRPC','Supabase','Firebase','Stripe','OpenAI','Hugging Face','PyTorch','TensorFlow'];
 
-// Radar
-const radar=document.getElementById('radar');
-let rh='';for(let i=1;i<=5;i++){const s=i*18+'%';rh+='<div class="radar-ring" style="width:'+s+';height:'+s+'"></div>'}
-radarS.forEach(s=>{rh+='<div class="radar-dot" style="left:'+s.x+'%;top:'+s.y+'%"><div class="tip">'+s.n+'</div></div>'});
-radar.innerHTML=rh;
+// SVG Radar
+const svgRadar=document.getElementById('svgRadar');
+const cx=200,cy=200,maxR=150,levels=5;
+const angleStep=Math.PI*2/radarS.length;
+let svg='<svg viewBox="0 0 400 400">';
+// Grid levels
+for(let l=1;l<=levels;l++){
+  const r=maxR*l/levels;let pts='';
+  for(let i=0;i<radarS.length;i++){const a=i*angleStep-Math.PI/2;pts+=(cx+Math.cos(a)*r)+','+(cy+Math.sin(a)*r)+' '}
+  svg+='<polygon points="'+pts+'" fill="none" stroke="rgba(139,92,246,'+l*.04+')" stroke-width="1"/>';
+}
+// Axes
+for(let i=0;i<radarS.length;i++){const a=i*angleStep-Math.PI/2;svg+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+Math.cos(a)*maxR)+'" y2="'+(cy+Math.sin(a)*maxR)+'" class="radar-axis"/>'}
+// Data polygon
+let dataPts='';const pointData=[];
+for(let i=0;i<radarS.length;i++){const a=i*angleStep-Math.PI/2;const r=maxR*radarS[i].v/100;const px=cx+Math.cos(a)*r;const py=cy+Math.sin(a)*r;dataPts+=px+','+py+' ';pointData.push({x:px,y:py,n:radarS[i].n,v:radarS[i].v})}
+svg+='<polygon points="'+dataPts+'" class="radar-polygon"/>';
+// Points and labels
+for(let i=0;i<radarS.length;i++){const a=i*angleStep-Math.PI/2;const lx=cx+Math.cos(a)*(maxR+20);const ly=cy+Math.sin(a)*(maxR+20);svg+='<circle cx="'+pointData[i].x+'" cy="'+pointData[i].y+'" class="radar-point"><title>'+radarS[i].n+': '+radarS[i].v+'%</title></circle>';svg+='<text x="'+lx+'" y="'+ly+'" class="radar-label">'+radarS[i].n+'</text>'}
+svg+='</svg>';
+svgRadar.innerHTML=svg;
 
 // Skills
 const sc=document.getElementById('skillCats');
 cats.forEach(cat=>{
   let h='<div class="skill-cat"><h4><span>'+cat.emoji+'</span>'+cat.name+'</h4><div class="skill-bars">';
-  cat.skills.forEach(s=>{h+='<div class="sbar"><span class="nm">'+s.n+'</span><div class="track"><div class="fill '+cat.color+'" data-l="'+s.l+'"></div></div><span class="pct">'+s.l+'%</span></div>'});
+  cat.skills.forEach(s=>{const badge=s.l>=90?'expert':s.l>=80?'advanced':'intermediate';const badgeText=s.l>=90?'Expert':s.l>=80?'Advanced':'Intermediate';h+='<div class="sbar"><span class="nm">'+s.n+'</span><div class="track"><div class="fill '+cat.color+'" data-l="'+s.l+'"></div></div><span class="skill-badge '+badge+'">'+badgeText+'</span><span class="pct">'+s.l+'%</span></div>'});
   h+='</div></div>';sc.innerHTML+=h;
 });
 
@@ -875,8 +1029,10 @@ const projects=[
   {title:'开发者工具箱',desc:'集合多种实用开发工具的 Web 应用，包括 JSON 格式化、正则测试等。',tech:['Vue 3','Vite','Pinia','Tailwind'],cat:'工具',stars:167,forks:45,pat:'p1',icon:'🧰'},
   {title:'微服务电商平台',desc:'基于微服务架构的电商系统，使用 Docker 编排部署，支持高并发。',tech:['Node.js','MongoDB','Docker','RabbitMQ'],cat:'全栈',stars:203,forks:78,pat:'p2',icon:'🛒'},
   {title:'开源 UI 组件库',desc:'高质量 React 组件库，50+ 组件，支持主题定制与无障碍访问。',tech:['React','TypeScript','Storybook','Rollup'],cat:'开源',stars:512,forks:128,pat:'p3',icon:'📦'},
+  {title:'实时聊天应用',desc:'基于 WebSocket 的实时聊天应用，支持群聊、文件传输和消息加密。',tech:['Socket.io','Express','MongoDB','Redis'],cat:'全栈',stars:156,forks:42,pat:'p1',icon:'💬'},
+  {title:'自动化测试平台',desc:'企业级自动化测试平台，支持 API 测试、UI 测试和性能测试。',tech:['Playwright','Jest','K6','Docker'],cat:'工具',stars:198,forks:56,pat:'p2',icon:'🧪'},
 ];
-const filters=['全部','全栈','AI','移动端','工具','开源'];
+const filters=['全部','全栈','AI','移动端','工具','开源','聊天','测试'];
 const ghSvg='<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>';
 const linkSvg='<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>';
 
@@ -887,7 +1043,7 @@ const pg=document.getElementById('projGrid');
 function render(f){
   pg.innerHTML='';
   projects.filter(p=>f==='全部'||p.cat===f).forEach(p=>{
-    const c=document.createElement('div');c.className='proj-card reveal';
+    const c=document.createElement('div');c.className='proj-card reveal holo-card';
     c.innerHTML='<div class="thumb"><div class="overlay"></div><div class="pattern '+p.pat+'"></div><div class="icon">'+p.icon+'</div></div><div class="body"><h3>'+p.title+'</h3><p>'+p.desc+'</p><div class="tags">'+p.tech.map(t=>'<span>'+t+'</span>').join('')+'</div><div class="foot"><div class="stats"><span>⭐ '+p.stars+'</span><span>🔀 '+p.forks+'</span></div><div class="links"><a href="#" title="GitHub">'+ghSvg+'</a><a href="#" title="Demo">'+linkSvg+'</a></div></div></div>';
     pg.appendChild(c);
   });
@@ -906,14 +1062,14 @@ card.innerHTML='<div class="gh-header"><div class="left"><div class="av">👨‍
 // ===== EXPERIENCE =====
 (function(){
 const items=[
-  {date:'2024 - 至今',title:'高级全栈工程师',company:'科技公司',desc:'负责核心产品的架构设计与开发，带领团队完成多个关键项目的交付。'},
-  {date:'2022 - 2024',title:'全栈开发工程师',company:'创业公司',desc:'从零搭建公司技术栈，主导多个 Web 应用和移动端项目的开发。'},
-  {date:'2021 - 2022',title:'前端开发工程师',company:'互联网公司',desc:'负责公司主要产品的前端开发，优化用户体验与页面性能。'},
-  {date:'2020 - 2021',title:'初级开发者',company:'技术工作室',desc:'参与多个外包项目的开发，快速成长并掌握全栈开发技能。'}
+  {date:'2024 - 至今',title:'高级全栈工程师',company:'科技公司',desc:'负责核心产品的架构设计与开发，带领团队完成多个关键项目的交付。',details:['主导微服务架构迁移，系统可用性提升至99.9%','设计并实现实时数据处理平台，日处理数据量达TB级','建立前端工程化体系，团队开发效率提升40%']},
+  {date:'2022 - 2024',title:'全栈开发工程师',company:'创业公司',desc:'从零搭建公司技术栈，主导多个 Web 应用和移动端项目的开发。',details:['搭建公司技术栈：React + Node.js + PostgreSQL','开发跨平台移动应用，用户量突破10万','实现CI/CD自动化流水线，部署效率提升300%']},
+  {date:'2021 - 2022',title:'前端开发工程师',company:'互联网公司',desc:'负责公司主要产品的前端开发，优化用户体验与页面性能。',details:['重构前端架构，首屏加载时间从3s降至1.2s','实现组件库建设，覆盖80%业务场景','主导无障碍访问改造，通过WCAG 2.1 AA标准']},
+  {date:'2020 - 2021',title:'初级开发者',company:'技术工作室',desc:'参与多个外包项目的开发，快速成长并掌握全栈开发技能。',details:['参与5+个外包项目，涵盖电商、教育、医疗领域','快速掌握React、Vue、Node.js等主流技术','获得最佳新人奖，代码质量评分连续3个月A+']}
 ];
 const tl=document.getElementById('timeline');
 items.forEach((it,i)=>{const d=document.createElement('div');d.className='tl-item reveal';d.style.transitionDelay=(i*.12)+'s';
-d.innerHTML='<div class="tl-dot"></div><div class="tl-content"><div class="date">'+it.date+'</div><h4>'+it.title+'</h4><div class="company">'+it.company+'</div><p>'+it.desc+'</p></div>';tl.appendChild(d)});
+d.innerHTML='<div class="tl-dot"></div><div class="tl-content"><div class="date">'+it.date+'</div><h4>'+it.title+'</h4><div class="company">'+it.company+'</div><p>'+it.desc+'</p><div class="tl-toggle" onclick="this.parentElement.classList.toggle(\'expanded\')"><span>查看详情</span><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="tl-expand"><ul style="list-style:none;display:flex;flex-direction:column;gap:6px;padding:0">'+it.details.map(s=>'<li style="font-size:.78rem;color:var(--text2);display:flex;align-items:center;gap:6px"><span style="width:4px;height:4px;border-radius:50%;background:var(--purple);flex-shrink:0"></span>'+s+'</li>').join('')+'</ul></div></div>';tl.appendChild(d)});
 })();
 
 // ===== TESTIMONIALS =====
@@ -921,7 +1077,10 @@ d.innerHTML='<div class="tl-dot"></div><div class="tl-content"><div class="date"
 const items=[
   {text:'RomeGe 是我合作过的最出色的开发者之一。他的代码质量极高，对细节的把控令人印象深刻。',name:'张三',role:'产品经理',emoji:'👨‍💼'},
   {text:'技术能力出众，沟通效率很高。交给他的项目总能按时高质量完成。',name:'李四',role:'CTO',emoji:'👩‍💻'},
-  {text:'对前端技术有深入的理解，总能提出创新的解决方案。强烈推荐！',name:'王五',role:'设计师',emoji:'🎨'}
+  {text:'对前端技术有深入的理解，总能提出创新的解决方案。强烈推荐！',name:'王五',role:'设计师',emoji:'🎨'},
+  {text:'合作非常愉快，代码规范且文档齐全。是一个值得信赖的技术伙伴。',name:'赵六',role:'技术总监',emoji:'👨‍🔧'},
+  {text:'在项目中展现了出色的问题解决能力，多次帮助团队攻克技术难关。',name:'钱七',role:'项目经理',emoji:'📋'},
+  {text:'对新技术保持敏锐的嗅觉，总能为项目带来最合适的技术方案。',name:'孙八',role:'架构师',emoji:'🏗️'}
 ];
 const g=document.getElementById('testiGrid');
 items.forEach(it=>{const c=document.createElement('div');c.className='testi-card reveal';
@@ -933,7 +1092,10 @@ c.innerHTML='<div class="qt">"</div><div class="txt">'+it.text+'</div><div class
 const posts=[
   {title:'如何用 Next.js 14 构建现代化 Web 应用',cat:'前端开发',time:'8 分钟',date:'2026-05-01',bg:'b1',desc:'深入探讨 Next.js 14 的新特性与最佳实践。'},
   {title:'Docker 容器化实战：从开发到部署',cat:'DevOps',time:'12 分钟',date:'2026-04-20',bg:'b2',desc:'完整的 Docker 容器化工作流程指南。'},
-  {title:'AI 驱动的开发：我的 LLM 集成经验',cat:'AI & ML',time:'10 分钟',date:'2026-04-10',bg:'b3',desc:'分享将大语言模型集成到实际项目中的经验。'}
+  {title:'AI 驱动的开发：我的 LLM 集成经验',cat:'AI & ML',time:'10 分钟',date:'2026-04-10',bg:'b3',desc:'分享将大语言模型集成到实际项目中的经验。'},
+  {title:'TypeScript 高级类型体操实战',cat:'前端开发',time:'15 分钟',date:'2026-03-28',bg:'b1',desc:'深入理解条件类型、映射类型和模板字面量类型。'},
+  {title:'Kubernetes 入门：从零到部署',cat:'DevOps',time:'18 分钟',date:'2026-03-15',bg:'b2',desc:'Kubernetes 核心概念与实际部署指南。'},
+  {title:'构建高性能 React 应用的 10 个技巧',cat:'前端开发',time:'12 分钟',date:'2026-03-01',bg:'b3',desc:'性能优化策略与最佳实践分享。'}
 ];
 const g=document.getElementById('blogGrid');
 posts.forEach(p=>{const c=document.createElement('div');c.className='blog-card reveal';
@@ -947,7 +1109,9 @@ const chs=[
   {name:'邮箱',val:'your@email.com',icon:'📧',cls:'i2',href:'mailto:your@email.com'},
   {name:'Twitter / X',val:'@yourhandle',icon:'🐦',cls:'i3',href:'#'},
   {name:'LinkedIn',val:'Your Name',icon:'💼',cls:'i4',href:'#'},
-  {name:'微信',val:'your_wechat_id',icon:'💬',cls:'i5',href:'#'}
+  {name:'微信',val:'your_wechat_id',icon:'💬',cls:'i5',href:'#'},
+  {name:'Discord',val:'RomeGe#1234',icon:'🎮',cls:'i1',href:'#'},
+  {name:'掘金',val:'RomeGe',icon:'📝',cls:'i3',href:'#'}
 ];
 const ch=document.getElementById('channels');
 chs.forEach(c=>{const a=document.createElement('a');a.href=c.href;a.target='_blank';a.className='ch';
@@ -1012,7 +1176,11 @@ const achs=[
   {icon:'🤖',title:'AI 先锋',desc:'完成 5 个 AI 项目',color:'var(--pink)',fill:50,locked:true},
   {icon:'⚡',title:'性能猎手',desc:'页面加载 < 1s',color:'var(--orange)',fill:100},
   {icon:'🛡️',title:'安全卫士',desc:'通过安全审计',color:'var(--green)',fill:70},
-  {icon:'🎨',title:'设计大师',desc:'获得设计奖项',color:'var(--blue)',fill:30,locked:true}
+  {icon:'🎨',title:'设计大师',desc:'获得设计奖项',color:'var(--blue)',fill:30,locked:true},
+  {icon:'📦',title:'发布达人',desc:'发布 20+ 个开源包',color:'var(--purple)',fill:75},
+  {icon:'🎤',title:'技术演讲',desc:'完成 5+ 次技术分享',color:'var(--cyan)',fill:45,locked:true},
+  {icon:'👥',title:'团队领袖',desc:'带领 5+ 人团队',color:'var(--orange)',fill:100},
+  {icon:'🌍',title:'开源贡献者',desc:'为 10+ 个开源项目贡献代码',color:'var(--green)',fill:85}
 ];
 const g=document.getElementById('achGrid');
 achs.forEach(a=>{
@@ -1236,7 +1404,32 @@ document.addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{
   buf+=e.key.toLowerCase();if(buf.length>6)buf=buf.slice(-6);
   if(buf==='romege'){confetti();showNotif('🎉 你找到了彩蛋！','输入 "romege" 触发了隐藏效果！');buf=''}
+  if(buf==='matrix'){toggleMatrix();showNotif('🟢 Matrix','矩阵雨效果已切换！');buf=''}
+  if(buf==='neon'){document.body.classList.toggle('neon-mode');showNotif('💡 Neon','霓虹模式已切换！');buf=''}
 })})();
+
+// ===== MATRIX RAIN =====
+let matrixActive=false,matrixAnim=null;
+function toggleMatrix(){
+  const overlay=document.getElementById('matrixOverlay');
+  matrixActive=!matrixActive;
+  overlay.classList.toggle('show',matrixActive);
+  if(matrixActive){startMatrix()}else{cancelAnimationFrame(matrixAnim)}
+}
+function startMatrix(){
+  const cv=document.getElementById('matrixCanvas'),x=cv.getContext('2d');
+  cv.width=innerWidth;cv.height=innerHeight;
+  const cols=Math.floor(cv.width/16),drops=Array(cols).fill(1);
+  const chars='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF';
+  function draw(){
+    x.fillStyle='rgba(0,0,0,.05)';x.fillRect(0,0,cv.width,cv.height);
+    x.fillStyle='#0f0';x.font='14px monospace';
+    for(let i=0;i<drops.length;i++){const t=chars[Math.floor(Math.random()*chars.length)];x.fillStyle='rgba(0,255,0,'+(0.3+Math.random()*0.4)+')';x.fillText(t,i*16,drops[i]*16);if(drops[i]*16>cv.height&&Math.random()>.975)drops[i]=0;drops[i]++}
+    matrixAnim=requestAnimationFrame(draw);
+  }
+  draw();
+}
+window.addEventListener('resize',()=>{if(matrixActive){const cv=document.getElementById('matrixCanvas');cv.width=innerWidth;cv.height=innerHeight}});
 
 // ===== YEAR =====
 document.getElementById('year').textContent=new Date().getFullYear();
